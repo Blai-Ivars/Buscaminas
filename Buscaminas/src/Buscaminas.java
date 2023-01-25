@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 public class Buscaminas {
 
@@ -6,43 +7,43 @@ public class Buscaminas {
 
     }
 
-
-    private static void MostrarCrearMenu()
-    {
+    private static void MostrarCrearMenu() {
         int OpcioTriada = 0;
-        int[][] taulell;
+        char[][] taulell;
         System.out.println(" ====MENU DE JOC====\n" +
-                           "1- Triar Dificultat\n" +
-                           "2-Començar Partida\n" +
-                           "3- Exit Game");
+                "1- Triar Dificultat\n" +
+                "2-Començar Partida\n" +
+                "3- Exit Game");
 
-        Scanner lector=new Scanner(System.in);
-        OpcioTriada=lector.nextInt();
+        Scanner lector = new Scanner(System.in);
+        OpcioTriada = lector.nextInt();
 
-       switch (OpcioTriada){
+        switch (OpcioTriada) {
 
-           case 1:
+            case 1:
 
-                int dificultat=SelectorDificultat();
+                int dificultat = SelectorDificultat();
                 taulell = crearTaulell(dificultat);
                 mostrarTaulell(taulell);
 
                 break;
-           case 2:
-               System.out.println("2");
-               break;
-           case 3:
-               System.out.println("3");
-               break;
+            case 2:
+                System.out.println("2");
 
-       }
+                break;
+            case 3:
+                System.out.println("3");
+
+                break;
+
+        }
     }
 
     private static int SelectorDificultat() {
 
         Scanner lector = new Scanner(System.in);
         System.out.println("Quina dificultat vols seleccionar: \n" +
-                "1- Dificultat Fàcil (8x8[10 miens]) \n"+
+                "1- Dificultat Fàcil (8x8[10 miens]) \n" +
                 "2- Dificultat Intermitja (16x16[40 mines]) \n" +
                 "3-Dificultat Avançada (20x20 [64 mines]) \n");
 
@@ -50,18 +51,89 @@ public class Buscaminas {
         return Dificultat;
     }
 
-    public static void crearTaulell(int Dificultat){
-        switch (Dificultat)
-        {
-            case 1:
-            {
-                System.out.println("Hola");
+    public static char[][] crearTaulell(int Dificultat) {
+        char taulell[][] = new char[0][0];
+        int a, b;
+
+        switch (Dificultat) {
+            case 1: {
+
+                int nmines = 10;
+                int mida = 8;
+
+
+                taulell = new char[8][8];
+
+                for (int j = 0; j < mida; j++) {
+                    for (int i = 0; i < mida; i++) {
+                        taulell[j][i] = 0;
+                    }
+                }
+
+                Random randomr = new Random();
+                a = randomr.nextInt(0, 9);
+                b = randomr.nextInt(0, 9);
+
+                taulell[a][b] = 1;
+                nmines++;
+
+                break;
             }
 
+            case 2: {
+
+                int nmines = 40;
+                int mida = 16;
+
+                taulell = new char[16][16];
+
+                for (int j = 0; j < mida; j++) {
+                    for (int i = 0; i < mida; i++) {
+                        taulell[j][i] = 0;
+                    }
+                }
+
+                Random randomr = new Random();
+                a = randomr.nextInt(0, 17);
+                b = randomr.nextInt(0, 17);
+
+                taulell[a][b] = 1;
+                nmines++;
+
+                break;
+            }
+
+            case 3: {
+                int nmines = 64;
+                int mida = 20;
+
+                taulell = new char[20][20];
+
+                for (int j = 0; j < mida; j++) {
+                    for (int i = 0; i < mida; i++) {
+                        taulell[j][i] = 0;
+                    }
+                }
+
+                Random randomr = new Random();
+                a = randomr.nextInt(0, 21);
+                b = randomr.nextInt(0, 21);
+
+                taulell[a][b] = 1;
+                nmines++;
+
+                break;
+            }
         }
+
         return taulell;
     }
-    
+
+    public static char[][] mostrarTaulell(char[][] taulell) {
+
+
+        return new char[0][];
+    }
 }
 
 
