@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
+
 public class Buscaminas {
     public static void main(String[] args) {
         MostrarCrearMenu();
@@ -61,7 +62,7 @@ public class Buscaminas {
                 b = randomr.nextInt(0, 9);
 
                 taulell[a][b] = 1;
-                nmines++;
+
                 break;
             }
             case 2: {
@@ -80,7 +81,7 @@ public class Buscaminas {
                 b = randomr.nextInt(0, 17);
 
                 taulell[a][b] = 1;
-                nmines++;
+
                 break;
             }
             case 3: {
@@ -100,7 +101,6 @@ public class Buscaminas {
                 b = randomr.nextInt(0, 21);
 
                 taulell[a][b] = 1;
-                nmines++;
 
                 break;
             }
@@ -109,17 +109,37 @@ public class Buscaminas {
         return taulell;
     }
 
-    public static char[][] mostrarTaulell(char[][] taulell)
+    public static void mostrarTaulell(char[][] taulell)
     {
-
-
-
-
-
-
-        return null;
+        taulell[4][6] = 'X';
+        for (int i = 0; i < taulell.length; i++) {
+            for (int j = 0; j < taulell[0].length; j++) {
+                System.out.print(taulell[i][j] + " ");
+            }
+            System.out.print("\n");
+        }
     }
 
+    public static int DemanarPosicio(){
+
+        Scanner lector=new Scanner(System.in);
+        int [][] Posicio;
+
+
+        return Posicio;
+    }
+    public static void ComprovarPosicio(int [] Posicio){
+
+
+
+
+    }
 }
- // video afegir mines https://www.youtube.com/watch?v=Uo-6KMUHZ44&ab_channel=BelisarioDeLaMata
+
+
+
+
+
+
+
 
