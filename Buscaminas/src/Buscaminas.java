@@ -121,19 +121,17 @@ public class Buscaminas {
         }
     }
 
-    public static int DemanarPosicio(){
-
+    public static int DemanarComprovarPosicio(){
         Scanner lector=new Scanner(System.in);
-        int [][] Posicio;
+        int [][] Posicio=new int[1][1];
 
-        
+        System.out.println("Introdueix la coordenada x desitjada");
+        int x= lector.nextInt();
+        System.out.println("Introdueix la coordenada y desitjada");
+        int y= lector.nextInt();
+
+
         return Posicio;
-    }
-    public static void ComprovarPosicio(int [] Posicio){
-
-
-
-
     }
 }
 
