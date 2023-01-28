@@ -60,7 +60,7 @@ public class Buscaminas {
                 Random randomr = new Random();
                 a = randomr.nextInt(0, 9);
                 b = randomr.nextInt(0, 9);
-
+                //MIRAR QUE ÉS AIXÓ I QUE FA PK NI PUTIS
                 taulell[a][b] = 1;
 
                 break;
@@ -79,7 +79,7 @@ public class Buscaminas {
                 Random randomr = new Random();
                 a = randomr.nextInt(0, 17);
                 b = randomr.nextInt(0, 17);
-
+                //MIRAR QUE ÉS AIXÓ I QUE FA PK NI PUTIS
                 taulell[a][b] = 1;
 
                 break;
@@ -99,6 +99,7 @@ public class Buscaminas {
                 Random randomr = new Random();
                 a = randomr.nextInt(0, 21);
                 b = randomr.nextInt(0, 21);
+                //MIRAR QUE ÉS AIXÓ I QUE FA PK NI PUTIS
 
                 taulell[a][b] = 1;
 
@@ -125,7 +126,7 @@ public class Buscaminas {
         Scanner lector=new Scanner(System.in);
         int [][] Posicio;
 
-
+        
         return Posicio;
     }
     public static void ComprovarPosicio(int [] Posicio){
