@@ -23,7 +23,8 @@ public class Buscaminas {
                 mostrarTaulell(taulell);
                 break;
             case 2:
-                System.out.println("2");
+                DemanarComprovarPosicio(int[][] MinaLocation);
+
                 break;
             case 3:
                 System.out.println("3");
@@ -121,17 +122,26 @@ public class Buscaminas {
         }
     }
 
-    public static int DemanarComprovarPosicio(){
+    public static boolean DemanarComprovarPosicio(int[][] PosicioMina){
         Scanner lector=new Scanner(System.in);
         int [][] Posicio=new int[1][1];
+        boolean Minatrobada=false;
+        PosicioMina=  wwwwwwwwq//Posa Aqui la posicio de la mina en plan  "posicioMina(posicio); per aixi transferir la posicio i mes aball comprovar-la"
 
-        System.out.println("Introdueix la coordenada x desitjada");
-        int x= lector.nextInt();
-        System.out.println("Introdueix la coordenada y desitjada");
-        int y= lector.nextInt();
+        do {
+            System.out.println("Introdueix la coordenada x desitjada");
+            int x = lector.nextInt();
+            System.out.println("Introdueix la coordenada y desitjada");
+            int y = lector.nextInt();
 
-
-        return Posicio;
+            if (Posicio[x][y] == PosicioMina[][]){
+                Minatrobada = true;
+            }else {
+                //Aqui necessitem fer l'update de la taula i mostrar-ho ns si vols fer un mètode de update taula
+                //Jo si vols dema ja actualitzare el word
+            }
+        }while(Minatrobada=false);
+        return Minatrobada;
     }
 }
 
