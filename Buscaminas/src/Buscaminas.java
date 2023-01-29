@@ -44,10 +44,11 @@ public class Buscaminas {
     }
     public static char[][] crearTaulell(int Dificultat) {
         char taulell[][] = new char[0][0];
-        int a, b;
+        double w,z;
 
         switch (Dificultat) {
             case 1: {
+
                 int nmines = 10;
                 int mida = 8;
 
@@ -58,12 +59,16 @@ public class Buscaminas {
                         taulell[j][i] = 0;
                     }
                 }
-                Random randomr = new Random();
-                a = randomr.nextInt(0, 9);
-                b = randomr.nextInt(0, 9);
-                //MIRAR QUE ÉS AIXÓ I QUE FA PK NI PUTIS
-                taulell[a][b] = 1;
-
+                do  {
+                    w=Math.random()*8;
+                    z=Math.random()*8;
+                    w=(int)w;
+                    z=(int)z;
+                    if  (z!=0 && w!=0 && z!=8-1 && w!=8-1){
+                        taulell[(int)w][(int) z ]=1;
+                        nmines++;
+                    }
+                }while (nmines<=10);
                 break;
             }
             case 2: {
@@ -77,11 +82,16 @@ public class Buscaminas {
                         taulell[j][i] = 0;
                     }
                 }
-                Random randomr = new Random();
-                a = randomr.nextInt(0, 17);
-                b = randomr.nextInt(0, 17);
-                //MIRAR QUE ÉS AIXÓ I QUE FA PK NI PUTIS
-                taulell[a][b] = 1;
+                do  {
+                    w=Math.random()*16;
+                    z=Math.random()*16;
+                    w=(int)w;
+                    z=(int)z;
+                    if  (z!=0 && w!=0 && z!=16-1 && w!=16-1){
+                        taulell[(int)w][(int) z ]=1;
+                        nmines++;
+                    }
+                }while (nmines<=40);
 
                 break;
             }
@@ -96,13 +106,16 @@ public class Buscaminas {
                         taulell[j][i] = 0;
                     }
                 }
-
-                Random randomr = new Random();
-                a = randomr.nextInt(0, 21);
-                b = randomr.nextInt(0, 21);
-                //MIRAR QUE ÉS AIXÓ I QUE FA PK NI PUTIS
-
-                taulell[a][b] = 1;
+                do  {
+                    w=Math.random()*20;
+                    z=Math.random()*20;
+                    w=(int)w;
+                    z=(int)z;
+                    if  (z!=0 && w!=0 && z!=20-1 && w!=20-1){
+                        taulell[(int)w][(int) z ]=1;
+                        nmines++;
+                    }
+                }while (nmines<=64);
 
                 break;
             }
@@ -113,20 +126,20 @@ public class Buscaminas {
 
     public static void mostrarTaulell(char[][] taulell)
     {
-        taulell[4][6] = 'X';
+
         for (int i = 0; i < taulell.length; i++) {
             for (int j = 0; j < taulell[0].length; j++) {
-                System.out.print(taulell[i][j] + " ");
+                System.out.print(taulell[i][j] + "0 ");
             }
             System.out.print("\n");
         }
     }
 
-    public static boolean DemanarComprovarPosicio(int[][] PosicioMina){
+    public static boolean DemanarComprovarPosicio(int[][] PosicioMina,char[][] taulell){
         Scanner lector=new Scanner(System.in);
         int [][] Posicio=new int[1][1];
         boolean Minatrobada=false;
-        PosicioMina=  wwwwwwwwq//Posa Aqui la posicio de la mina en plan  "posicioMina(posicio); per aixi transferir la posicio i mes aball comprovar-la"
+        PosicioMina= PosicioMina([][]);//Posa Aqui la posicio de la mina en plan  "posicioMina(posicio); per aixi transferir la posicio i mes aball comprovar-la"
 
         do {
             System.out.println("Introdueix la coordenada x desitjada");
@@ -134,18 +147,25 @@ public class Buscaminas {
             System.out.println("Introdueix la coordenada y desitjada");
             int y = lector.nextInt();
 
-            if (Posicio[x][y] == PosicioMina[][]){
+            if (Posicio[x][y] == PosicioMina[1][1]){
                 Minatrobada = true;
-            }else {
-                //Aqui necessitem fer l'update de la taula i mostrar-ho ns si vols fer un mètode de update taula
-                //Jo si vols dema ja actualitzare el word
+            }else
+            {
+                PosicioMina[x][y] = taulell[x][y];
+
+                taulell[x][y] = 'X';
+                for (int i = 0; i < taulell.length; i++) {
+                    for (int j = 0; j < taulell[0].length; j++) {
+                        System.out.print(taulell[x][y] + "0 ");
+                    }
+                    System.out.print("\n");
+                }
             }
         }while(Minatrobada=false);
         return Minatrobada;
     }
+    // fer algun de if minatrobada == true sout "Has perdut" o una merda aixi
 }
-
-
 
 
 
