@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Buscaminas {
+
     public static void main(String[] args) {
         MostrarCrearMenu();
     }
@@ -21,13 +22,15 @@ public class Buscaminas {
                 int dificultat = SelectorDificultat();
                 taulell = crearTaulell(dificultat);
                 mostrarTaulell(taulell);
-                break;
+
             case 2:
-                DemanarComprovarPosicio(int[][] MinaLocation);
+                System.out.println("Començant Partida..." +
+                        "\n");
+                DemanarComprovarPosicio(char[][] taulelll);
 
                 break;
             case 3:
-                System.out.println("3");
+                System.out.println("Merci per jugar!");
                 break;
         }
     }
@@ -44,11 +47,10 @@ public class Buscaminas {
     }
     public static char[][] crearTaulell(int Dificultat) {
         char taulell[][] = new char[0][0];
-        double w,z;
+        int a, b;
 
         switch (Dificultat) {
             case 1: {
-
                 int nmines = 10;
                 int mida = 8;
 
@@ -59,16 +61,15 @@ public class Buscaminas {
                         taulell[j][i] = 0;
                     }
                 }
-                do  {
-                    w=Math.random()*8;
-                    z=Math.random()*8;
-                    w=(int)w;
-                    z=(int)z;
-                    if  (z!=0 && w!=0 && z!=8-1 && w!=8-1){
-                        taulell[(int)w][(int) z ]=1;
-                        nmines++;
-                    }
-                }while (nmines<=10);
+                Random randomr = new Random();
+                for (int i=0;i<nmines;i++) {
+                    a = randomr.nextInt(0, 8);
+                    b = randomr.nextInt(0, 8);
+
+                    taulell[a][b] = 1;
+                }
+
+
                 break;
             }
             case 2: {
@@ -82,16 +83,14 @@ public class Buscaminas {
                         taulell[j][i] = 0;
                     }
                 }
-                do  {
-                    w=Math.random()*16;
-                    z=Math.random()*16;
-                    w=(int)w;
-                    z=(int)z;
-                    if  (z!=0 && w!=0 && z!=16-1 && w!=16-1){
-                        taulell[(int)w][(int) z ]=1;
-                        nmines++;
-                    }
-                }while (nmines<=40);
+                Random randomr = new Random();
+                for (int i=0;i<nmines;i++) {
+                    a = randomr.nextInt(0, 16);
+                    b = randomr.nextInt(0, 16);
+
+                    taulell[a][b] = 1;
+                }
+
 
                 break;
             }
@@ -106,16 +105,15 @@ public class Buscaminas {
                         taulell[j][i] = 0;
                     }
                 }
-                do  {
-                    w=Math.random()*20;
-                    z=Math.random()*20;
-                    w=(int)w;
-                    z=(int)z;
-                    if  (z!=0 && w!=0 && z!=20-1 && w!=20-1){
-                        taulell[(int)w][(int) z ]=1;
-                        nmines++;
-                    }
-                }while (nmines<=64);
+                for (int i=0;i<nmines;i++){
+
+                    Random randomr = new Random();
+                    a = randomr.nextInt(0, 20);
+                    b = randomr.nextInt(0, 20);
+
+                    taulell[a][b] = 1;
+                }
+
 
                 break;
             }
@@ -126,20 +124,19 @@ public class Buscaminas {
 
     public static void mostrarTaulell(char[][] taulell)
     {
-
         for (int i = 0; i < taulell.length; i++) {
             for (int j = 0; j < taulell[0].length; j++) {
-                System.out.print(taulell[i][j] + "0 ");
+                System.out.print(taulell[i][j] + " ");
             }
             System.out.print("\n");
         }
     }
 
-    public static boolean DemanarComprovarPosicio(int[][] PosicioMina,char[][] taulell){
+
+    public static char[][] DemanarComprovarPosicio(char[][] taulell){
         Scanner lector=new Scanner(System.in);
-        int [][] Posicio=new int[1][1];
+        int [][] Posicio=new int[0][0];
         boolean Minatrobada=false;
-        PosicioMina= PosicioMina([][]);//Posa Aqui la posicio de la mina en plan  "posicioMina(posicio); per aixi transferir la posicio i mes aball comprovar-la"
 
         do {
             System.out.println("Introdueix la coordenada x desitjada");
@@ -147,11 +144,13 @@ public class Buscaminas {
             System.out.println("Introdueix la coordenada y desitjada");
             int y = lector.nextInt();
 
-            if (Posicio[x][y] == PosicioMina[1][1]){
+            if (Posicio[x][y] == 1){
                 Minatrobada = true;
+                System.out.println("Mina trobada intenta a la pròxima");
+
             }else
             {
-                PosicioMina[x][y] = taulell[x][y];
+                Posicio[x][y] = taulell[x][y];
 
                 taulell[x][y] = 'X';
                 for (int i = 0; i < taulell.length; i++) {
@@ -162,11 +161,10 @@ public class Buscaminas {
                 }
             }
         }while(Minatrobada=false);
-        return Minatrobada;
+        return taulell;
     }
-    // fer algun de if minatrobada == true sout "Has perdut" o una merda aixi
-}
 
+}
 
 
 
