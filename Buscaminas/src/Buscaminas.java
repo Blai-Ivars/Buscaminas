@@ -22,11 +22,11 @@ public class Buscaminas {
                 int dificultat = SelectorDificultat();
                 taulell = crearTaulell(dificultat);
                 mostrarTaulell(taulell);
-
+                System.out.println(" ");
             case 2:
                 System.out.println("Començant Partida..." +
                         "\n");
-                DemanarComprovarPosicio(char[][] taulelll);
+                //DemanarComprovarPosicio(char[][] taulell);
 
                 break;
             case 3:
@@ -126,6 +126,8 @@ public class Buscaminas {
     {
         for (int i = 0; i < taulell.length; i++) {
             for (int j = 0; j < taulell[0].length; j++) {
+
+                taulell[i][j]='o';
                 System.out.print(taulell[i][j] + " ");
             }
             System.out.print("\n");
