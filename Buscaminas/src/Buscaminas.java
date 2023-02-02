@@ -2,10 +2,18 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Buscaminas {
+    static int[][] taulellS;
+    static char[][] mines;
+    static Scanner filaColumna;
+
+
 
     public static void main(String[] args) {
         MostrarCrearMenu();
+        DemanarIComprovar(char[][]taulell);
+
     }
+
     private static void MostrarCrearMenu() {
         int OpcioTriada;
         char[][] taulell;
@@ -53,6 +61,7 @@ public class Buscaminas {
             case 1: {
                 int nmines = 10;
                 int mida = 8;
+                boolean mines;
 
                 taulell = new char[8][8];
 
@@ -121,51 +130,54 @@ public class Buscaminas {
 
         return taulell;
     }
+    public static void mostrarTaulell(char[][]taulell) {
 
-    public static void mostrarTaulell(char[][] taulell)
-    {
         for (int i = 0; i < taulell.length; i++) {
+
             for (int j = 0; j < taulell[0].length; j++) {
 
-                taulell[i][j]='o';
-                System.out.print(taulell[i][j] + " ");
+                System.out.print(taulell[i][j] + "\t");
             }
-            System.out.print("\n");
+            System.out.println();
         }
     }
+    public static void DemanarIComprovar(char[][] taulell) {
 
-
-    public static char[][] DemanarComprovarPosicio(char[][] taulell){
-        Scanner lector=new Scanner(System.in);
-        int [][] Posicio=new int[0][0];
-        boolean Minatrobada=false;
+        boolean completat = false;
 
         do {
-            System.out.println("Introdueix la coordenada x desitjada");
-            int x = lector.nextInt();
-            System.out.println("Introdueix la coordenada y desitjada");
-            int y = lector.nextInt();
 
-            if (Posicio[x][y] == 1){
-                Minatrobada = true;
-                System.out.println("Mina trobada intenta a la pròxima");
+            System.out.print("Ingresa una  fila: ");
 
-            }else
-            {
-                Posicio[x][y] = taulell[x][y];
+            int x = filaColumna.nextInt() - 1;
 
-                taulell[x][y] = 'X';
-                for (int i = 0; i < taulell.length; i++) {
-                    for (int j = 0; j < taulell[0].length; j++) {
-                        System.out.print(taulell[x][y] + "0 ");
+            System.out.print("Ingresa una columna: ");
+            int y = filaColumna.nextInt() - 1;
+
+            //si a les coordenades que hem demanat trobem una mina sortira un missatge de que hem perdut i ens mostrara el taullelresolt
+
+            if (mines[x][y] == 'X') {
+
+                System.out.println("Has trobat una mina,has perdut");
+                for (int i = 0; i < mines.length; i++) {
+
+                    for (int j = 0; j < mines[0].length; j++) {
+
+                        if (mines[i][j] == 'X') {
+
+                            taulell[i][j] = 'X';
+                        }
                     }
-                    System.out.print("\n");
                 }
-            }
-        }while(Minatrobada=false);
-        return taulell;
-    }
+                mostrarTaulell(taulell);
+                break;
 
+            } else {
+                taulell[x][y] = (taulellS[x][y] + "").charAt(0);
+                mostrarTaulell(taulell);
+            }
+        } while(!completat);
+    }
 }
 
 
