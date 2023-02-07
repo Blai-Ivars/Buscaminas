@@ -1,12 +1,9 @@
 import java.util.Random;
 import java.util.Scanner;
-
 public class Buscaminas {
     static int[][] taulellS;
     static char[][] mines;
     static Scanner filaColumna;
-
-
 
     public static void main(String[] args) {
         MostrarCrearMenu();
@@ -179,8 +176,3 @@ public class Buscaminas {
         } while(!completat);
     }
 }
-
-
-
-
-
